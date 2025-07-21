@@ -2,27 +2,13 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Us — HireMe</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @include('layouts.head')
 </head>
 
 <body class="bg-white text-hireme-dark min-h-screen flex flex-col">
-    <!-- Navbar -->
-    <nav class="bg-white border-b border-hireme-muted shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between h-16 items-center">
-            <div class="text-hireme font-bold text-xl">
-                <a href="{{ url('/') }}">HireMe</a>
-            </div>
-            <div class="space-x-6 font-medium hidden md:flex">
-                <a href="{{ route('about') }}" class="hover:text-hireme-dark">About</a>
-                <a href="{{ url('contact') }}" class="hover:text-hireme-dark">Contact</a>
-                <a href="{{ route('login') }}" class="hover:text-hireme-dark">Login</a>
-                <a href="{{ route('register') }}" class="hover:text-hireme-dark">Register</a>
-            </div>
-        </div>
-    </nav>
+
+    @include('layouts.navbar')
 
     <!-- Main Content -->
     <main class="flex-grow py-16 px-4 sm:px-6 lg:px-8">
@@ -92,10 +78,7 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-hireme text-white text-center text-sm py-4 mt-12">
-        &copy; 2025 HireMe — All rights reserved.
-    </footer>
+    @include('layouts.footer')
 </body>
 
 </html>
