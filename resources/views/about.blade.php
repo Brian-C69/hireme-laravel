@@ -66,7 +66,7 @@
 
             @foreach ($team as $member)
             <div class="flex flex-col md:flex-row bg-hireme-light p-6 rounded shadow-md items-center gap-6">
-                <img src="{{ $member['image'] }}" alt="{{ $member['name'] }}" class="w-48 h-48 object-cover rounded shadow-md">
+                <img src="{{ $member['image'] }}" alt="{{ $member['name'] }}" class="w-48 md:w-48 h-auto aspect-[3/4] object-cover rounded shadow-md">
                 <div class="text-left">
                     <h3 class="text-xl font-bold text-hireme">{{ $member['name'] }}</h3>
                     <p class="text-sm text-gray-600 italic mb-2">{{ $member['role'] }}</p>

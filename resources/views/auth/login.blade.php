@@ -1,47 +1,73 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@extends('layouts.guest')
+
+@section('content')
+<div class="text-center mb-6">
+    <x-application-logo class="w-14 h-14 text-hireme" />
+</div>
+
+<div class="bg-hireme-light rounded-lg shadow-xl p-8">
+    <h2 class="text-2xl font-bold text-hireme text-center">Login to HireMe</h2>
+    <p class="text-center text-hireme-dark mt-2 mb-6">
+        Welcome back! Please enter your credentials to continue.
+    </p>
+
+    @if (session('status'))
+    <div class="mb-4 text-sm text-green-600">
+        {{ session('status') }}
+    </div>
+    @endif
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        <!-- Email -->
+        <div class="mb-4">
+            <label for="email" class="block font-medium text-hireme">Email</label>
+            <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus
+                class="w-full px-4 py-3 border border-hireme-muted rounded focus:outline-none focus:ring-2 focus:ring-hireme focus:border-hireme transition duration-200" />
+            @error('email')
+            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+            @enderror
         </div>
 
         <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        <div class="mb-4">
+            <label for="password" class="block font-medium text-hireme">Password</label>
+            <input id="password" type="password" name="password" required
+                class="w-full px-4 py-3 border border-hireme-muted rounded focus:outline-none focus:ring-2 focus:ring-hireme focus:border-hireme transition duration-200" />
+            @error('password')
+            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+            @enderror
         </div>
 
         <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-            </label>
+        <div class="flex items-center mb-4">
+            <input id="remember_me" type="checkbox" name="remember"
+                class="mr-2 border-gray-300 rounded text-hireme focus:ring-hireme">
+            <label for="remember_me" class="text-sm text-hireme-dark">Remember me</label>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
+        <!-- Forgot Password -->
+        <div class="flex justify-between items-center mb-6">
             @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
+            <a class="text-sm text-hireme hover:underline" href="{{ route('password.request') }}">
+                Forgot your password?
+            </a>
             @endif
+        </div>
 
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
+        <!-- Submit -->
+        <div>
+            <button type="submit"
+                class="w-full bg-hireme hover:bg-hireme-dark text-white font-semibold py-3 px-4 rounded transition duration-200">
+                Log In
+            </button>
         </div>
     </form>
-</x-guest-layout>
+</div>
+
+<!-- Optional Footer -->
+<div class="mt-8 text-sm text-center text-hireme-dark">
+    © {{ date('Y') }} HireMe. All rights reserved.
+</div>
+@endsection

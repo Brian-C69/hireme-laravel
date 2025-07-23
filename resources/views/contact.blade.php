@@ -28,19 +28,19 @@
                 @csrf
                 <div>
                     <label class="block text-sm font-medium">First Name</label>
-                    <input type="text" name="first_name" class="mt-1 block w-full rounded border-gray-300 shadow-sm" required>
+                    <input type="text" name="first_name" class="mt-1 block w-full rounded border-gray-300 shadow-sm py-2 px-3" required>
                 </div>
                 <div>
                     <label class="block text-sm font-medium">Last Name</label>
-                    <input type="text" name="last_name" class="mt-1 block w-full rounded border-gray-300 shadow-sm" required>
+                    <input type="text" name="last_name" class="mt-1 block w-full rounded border-gray-300 shadow-sm py-2 px-3" required>
                 </div>
                 <div>
                     <label class="block text-sm font-medium">Email</label>
-                    <input type="email" name="email" class="mt-1 block w-full rounded border-gray-300 shadow-sm" required>
+                    <input type="email" name="email" class="mt-1 block w-full rounded border-gray-300 shadow-sm py-2 px-3" required>
                 </div>
                 <div>
                     <label class="block text-sm font-medium">Message</label>
-                    <textarea name="message" rows="5" class="mt-1 block w-full rounded border-gray-300 shadow-sm" required></textarea>
+                    <textarea name="message" rows="5" class="mt-1 block w-full rounded border-gray-300 shadow-sm py-2 px-3" required></textarea>
                 </div>
 
                 <div class="text-sm text-gray-600">
